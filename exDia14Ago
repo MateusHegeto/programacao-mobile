@@ -1,0 +1,84 @@
+/*
+
+ * Representação de uma conta no banco.
+
+ */
+
+class Conta constructor(cliente: String, numero: Int, agencia: Int){
+
+
+    private var _cliente: String = cliente
+
+    private var _numero: Int = numero
+
+    private var _agencia: Int = agencia
+
+    private var _saldo: Int = 0
+
+
+    //Código executado após o construtor
+
+    init{
+
+        println("Executou o construtor")
+
+    }
+
+
+    //Declaração dos métodos gerais
+
+    fun depositar(quantia: Double){
+
+        _saldo  += (quantia * 100).toInt()
+
+    }
+
+    fun retirar(quantia: Double){
+
+        _saldo  += (quantia * 100).toInt()
+
+       // 100.toDouble()
+
+    }
+
+
+    fun imprimirExtrato(){
+
+        println(_cliente)
+
+        println("$_numero - $_agencia")
+
+        println("${_saldo / 100}")
+
+    }
+
+
+    fun transferir(outraConta: Conta, quantia: Double){
+
+        this.retirar(quantia)
+
+        outraConta.depositar(quantia)
+
+    }
+
+
+}
+
+
+fun main(){
+
+    val conta1 = Conta ("Mateus", 4321, 10)
+
+    conta1.depositar(10000.00)
+
+    conta1.imprimirExtrato()
+
+
+    val conta2 = Conta ("Pedro", 2311, 11)
+
+    conta1.depositar(5000.00)
+
+    conta1.imprimirExtrato()
+
+
+}
